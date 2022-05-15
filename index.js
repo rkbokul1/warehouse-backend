@@ -18,7 +18,7 @@ password: m0s2tcQuCwOwkkRR
 // api
 
 app.get('/', (req, res) => {
-    res.send('Look mama, this is wareHouse Project!')
+    res.send('Look Hero, This is wareHouse Project!')
 });
 
 // node nongo 
@@ -45,6 +45,9 @@ const run = async () => {
             const stock = await stockCollection.findOne(query)
             res.send(stock);
         })
+
+        // updated stock
+       
 
 
 
