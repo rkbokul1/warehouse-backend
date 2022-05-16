@@ -39,15 +39,34 @@ const run = async () => {
             res.send(allStock);
         });
 
-        app.get ('/stock/:id', async (req, res) => {
+        app.get('/stock/:id', async (req, res) => {
             const id = req.params.id;
-            const query = {_id: ObjectId(id)};
+            const query = { _id: ObjectId(id) };
             const stock = await stockCollection.findOne(query)
             res.send(stock);
         })
 
         // updated stock
-       
+        app.put('/stock/:id', async (req, res) => {
+            const id = req.params.id;
+            const updatDoc = req.body;
+            const filter = { id: ObjectId(id) };
+            console.log(id, updatDoc);
+            const options = { upsert: true };
+            const update = {
+                $set:{
+                    updatDoc
+                }
+            }
+            const result = await stockCollection.updateOne(filter, update, options);
+            res.send(result)
+
+
+
+
+
+        })
+
 
 
 
